@@ -1,0 +1,40 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.container-head{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+
+.logo{
+    width: 100%;
+    overflow: hidden;
+    background: #252932;
+    margin-bottom: 20px;
+}
+.titulo{
+    color: #f2f2f2;
+    font-size: 50px;
+    line-height: 80px;
+}
+
+.forminicial{
+    width: 400px;
+    height: 400px;
+    background-color: burlywood;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.centro{
+    width:90%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+}
