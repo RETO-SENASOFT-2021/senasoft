@@ -43,27 +43,31 @@ CREATE TABLE `Jugador` (
 			}
 			break;
 		case 'POST':
-			
+			$NombreJugador = $_POST['NombreJugador'];
+			$Avatar = $_POST['Avatar'];
+
 			$sql="INSERT INTO Jugador (NombreJugador, Avatar) 
 					VALUES (:NombreJugador, :Avatar)";
 	
 			$stm=$pdo->prepare($sql);
-	
-			$stm->bindParam(':NombreJugador', $_GET['NombreJugador'], PDO::PARAM_STR);
+			$stm->bindParam(':NombreJugador', $NombreJugador, PDO::PARAM_STR);
+			$stm->bindParam(':Avatar', $Avatar, PDO::PARAM_STR);
 			$stm->execute();
+			
 			if ($stm) {
-				$idTipoCarta = $pdo->lastInsertId();
-				if($idTipoCarta){
-					header("HTTP/1.1 200 Datos guardados con éxito! ". $idTipoCarta);
+				$idJugador = $pdo->lastInsertId();
+				if($idJugador){
+					header("HTTP/1.1 200 Datos guardados con éxito! ". $idJugador);
 				}else{
-					header("HTTP/1.1 200 no se guardó la información en la base de datos!". $idTipoCarta);
+					header("HTTP/1.1 200 no se guardó la información en la base de datos!". $idJugador);
 				}
 			}else{
-				header("HTTP/1.1 200 Erro en la sentencia!". $idTipoCarta);
+				header("HTTP/1.1 200 Erro en la sentencia!". $idJugador);
 			}
 			$stm=null;
 			break;
 		case 'PUT':
+			/*
 			$idtipocarta=$_GET['idtipocarta'];
 			$tipocarta=$_GET['tipocarta'];
 
@@ -79,6 +83,7 @@ CREATE TABLE `Jugador` (
 			}else{
 				header("HTTP/1.1 200 Erro en la sentencia! No existe el código solicitado". $idtipocarta);
 			}
+			*/
 			$stm=null;
 			break;	
 		case 'DELETE':
@@ -96,6 +101,7 @@ CREATE TABLE `Jugador` (
 			break;	
 		default:
 				header("HTTP/1.1 400 Bad RequestMethod! ");
-		}
-		$pdo= null;
+	}
+	$pdo= null;
+	header("Location: /senasoft/BugFind/index.php");
 ?>

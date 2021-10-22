@@ -40,24 +40,29 @@ Servicio:Carta
 			}
 			break;
 		case 'POST':
-			/*
-			$sql="INSERT INTO Jugador (NombreJugador, Avatar) 
-					VALUES (:NombreJugador, :Avatar)";
+			$Carta = $_GET['Carta'];
+			$Imagen = $_GET['Imagen'];
+			$IdTipoCarta = $_GET['IdTipoCarta'];
+			
+			$sql="INSERT INTO Carta (Carta, Imagen, IdTipoCarta) 
+					VALUES (:Carta, :Imagen, :IdTipoCarta)";
 	
 			$stm=$pdo->prepare($sql);
 	
-			$stm->bindParam(':NombreJugador', $_GET['NombreJugador'], PDO::PARAM_STR);
+			$stm->bindParam(':Carta', $Carta, PDO::PARAM_STR);
+			$stm->bindParam(':Imagen', $Imagen, PDO::PARAM_STR);
+			$stm->bindParam(':IdTipoCarta', $IdTipoCarta, PDO::PARAM_INT);
 			$stm->execute();
 			if ($stm) {
-				$idTipoCarta = $pdo->lastInsertId();
+				$IdCarta = $pdo->lastInsertId();
 				if($idTipoCarta){
-					header("HTTP/1.1 200 Datos guardados con éxito! ". $idTipoCarta);
+					header("HTTP/1.1 200 Datos guardados con éxito! ". $IdCarta);
 				}else{
 					header("HTTP/1.1 200 no se guardó la información en la base de datos!". $idTipoCarta);
 				}
 			}else{
-				header("HTTP/1.1 200 Erro en la sentencia!". $idTipoCarta);
-			}*/
+				header("HTTP/1.1 200 Erro en la sentencia!". $IdCarta);
+			}
 			$stm=null;
 			break;
 		case 'PUT':
@@ -79,16 +84,16 @@ Servicio:Carta
 			$stm=null;
 			break;	
 		case 'DELETE':
-			/*$idtipocarta=$_GET['idtipocarta'];
-			$sql="DELETE FROM tipocarta WHERE (idtipocarta = :idtipocarta)";
+			$IdCarta=$_GET['IdCarta'];
+			$sql="DELETE FROM Carta WHERE (IdCarta = :IdCarta)";
 			$stm=$pdo->prepare($sql);
-			$stm->bindParam(':idtipocarta', $idtipocarta, PDO::PARAM_STR);
+			$stm->bindParam(':IdCarta', $IdCarta, PDO::PARAM_INT);
 			$stm->execute();
 			if ($stm) {
-				header("HTTP/1.1 200 Datos eliminado con éxito! ". $idtipocarta);
+				header("HTTP/1.1 200 Datos eliminado con éxito! ". $IdCarta);
 			}else{
-				header("HTTP/1.1 200 Erro en la sentencia! No existe el código solicitado". $idtipocarta);
-			}*/
+				header("HTTP/1.1 200 Erro en la sentencia! No existe el código solicitado". $IdCarta);
+			}
 			$stm=null;
 			break;	
 		default:

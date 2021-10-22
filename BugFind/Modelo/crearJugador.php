@@ -8,7 +8,7 @@ session_start();
 
 
 
-    header("Location:/juego.html");
+    header("Location:http://localhost/senasoft-main/bugfind/juego.html");
 
 
 ?>
