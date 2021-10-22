@@ -40,29 +40,24 @@ Servicio:Carta
 			}
 			break;
 		case 'POST':
-			$Carta = $_GET['Carta'];
-			$Imagen = $_GET['Imagen'];
-			$IdTipoCarta = $_GET['IdTipoCarta'];
-			
-			$sql="INSERT INTO Carta (Carta, Imagen, IdTipoCarta) 
-					VALUES (:Carta, :Imagen, :IdTipoCarta)";
+			/*
+			$sql="INSERT INTO Jugador (NombreJugador, Avatar) 
+					VALUES (:NombreJugador, :Avatar)";
 	
 			$stm=$pdo->prepare($sql);
 	
-			$stm->bindParam(':Carta', $Carta, PDO::PARAM_STR);
-			$stm->bindParam(':Imagen', $Imagen, PDO::PARAM_STR);
-			$stm->bindParam(':IdTipoCarta', $IdTipoCarta, PDO::PARAM_INT);
+			$stm->bindParam(':NombreJugador', $_GET['NombreJugador'], PDO::PARAM_STR);
 			$stm->execute();
 			if ($stm) {
-				$IdCarta = $pdo->lastInsertId();
+				$idTipoCarta = $pdo->lastInsertId();
 				if($idTipoCarta){
-					header("HTTP/1.1 200 Datos guardados con éxito! ". $IdCarta);
+					header("HTTP/1.1 200 Datos guardados con éxito! ". $idTipoCarta);
 				}else{
 					header("HTTP/1.1 200 no se guardó la información en la base de datos!". $idTipoCarta);
 				}
 			}else{
-				header("HTTP/1.1 200 Erro en la sentencia!". $IdCarta);
-			}
+				header("HTTP/1.1 200 Erro en la sentencia!". $idTipoCarta);
+			}*/
 			$stm=null;
 			break;
 		case 'PUT':
@@ -84,16 +79,16 @@ Servicio:Carta
 			$stm=null;
 			break;	
 		case 'DELETE':
-			$IdCarta=$_GET['IdCarta'];
-			$sql="DELETE FROM Carta WHERE (IdCarta = :IdCarta)";
+			/*$idtipocarta=$_GET['idtipocarta'];
+			$sql="DELETE FROM tipocarta WHERE (idtipocarta = :idtipocarta)";
 			$stm=$pdo->prepare($sql);
-			$stm->bindParam(':IdCarta', $IdCarta, PDO::PARAM_INT);
+			$stm->bindParam(':idtipocarta', $idtipocarta, PDO::PARAM_STR);
 			$stm->execute();
 			if ($stm) {
-				header("HTTP/1.1 200 Datos eliminado con éxito! ". $IdCarta);
+				header("HTTP/1.1 200 Datos eliminado con éxito! ". $idtipocarta);
 			}else{
-				header("HTTP/1.1 200 Erro en la sentencia! No existe el código solicitado". $IdCarta);
-			}
+				header("HTTP/1.1 200 Erro en la sentencia! No existe el código solicitado". $idtipocarta);
+			}*/
 			$stm=null;
 			break;	
 		default:
